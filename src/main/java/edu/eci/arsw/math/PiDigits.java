@@ -1,5 +1,7 @@
 package edu.eci.arsw.math;
 
+import java.util.ArrayList;
+
 ///  <summary>
 ///  An implementation of the Bailey-Borwein-Plouffe formula for calculating hexadecimal
 ///  digits of pi.
@@ -10,8 +12,10 @@ public class PiDigits {
 
     private static int DigitsPerSum = 8;
     private static double Epsilon = 1e-17;
+    private static ArrayList<ThreadDigits> hilos;
 
-    
+
+
     /**
      * Returns a range of hexadecimal digits of pi.
      * @param start The starting location of the range.
@@ -45,6 +49,70 @@ public class PiDigits {
         }
 
         return digits;
+    }
+
+    
+
+    public static byte[] getDigits(int start, int count, int n) throws InterruptedException {
+
+
+        int div = (int)(count/n);
+        int mod = count%n;
+        int inicio = start;
+        int fin = div + mod;
+        hilos = new ArrayList<ThreadDigits>();
+        for(int i = 0; i < n; i++){
+            ThreadDigits threadDigits = new ThreadDigits(inicio,fin);
+            //System.out.println(inicio);
+            hilos.add(threadDigits);
+            inicio += div;
+            fin += div;
+        }
+
+        for(int i = 0; i < n; i++){
+            hilos.get(i).start();
+        }
+        for(int i = 0; i < n; i++){
+            hilos.get(i).join();
+        }
+
+        ArrayList<byte[]> r = new ArrayList<>();
+        for(int i = 0; i < n; i++){
+            r.add(hilos.get(i).getRta());
+        }
+
+        byte[] bites = new byte[90];
+        int cont = 0;
+        for(int i = 0; i < n; i++){
+            //System.out.println(r.get(i).length);
+            for(int j = 0; j<r.get(i).length; j++){
+                bites[cont] = r.get(i)[j];
+                cont++;
+            }
+        }
+
+        return bites;
+
+    }
+
+
+    /**
+     *
+     * @param n número de threads que se ejecutan
+     * @return
+     */
+    public String getDigits(int n){
+        int div = (int)(1000000/n);
+        int mod = 1000000%n;
+        int inicio = 1;
+        int fin = div + mod;
+        for(int i = 0; i < n; i++){
+            ThreadDigits threadDigits = new ThreadDigits(inicio,fin);
+
+            inicio += div+1;
+            fin += div;
+        }
+        return "";
     }
 
     /// <summary>
