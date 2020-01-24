@@ -4,6 +4,7 @@
 
 ### Part I - Introduction to Java Threads
 ![](https://raw.githubusercontent.com/AndresFelipeGualdron/PiDigits/master/img/1.PNG "Thread de números entre A y B")
+Thread de números entre A y B
 
 Esta es la forma en la que se completó la clase que define el ciclo de vida del hilo que imprime los números entre un A y B determinado.
 
@@ -12,24 +13,31 @@ Esta es la forma en la que se completó la clase que define el ciclo de vida del
 Se crearon los hilos asignando los intervalos dados y se ejecutó el programa, primero con run() y luego con start(). Se pudo observar que al ejecutarlo con run() los números se imprimían en total orden y cuando se ejecutaba con start(), la impresión no tenía un orden determinado.
 
 ![](https://raw.githubusercontent.com/AndresFelipeGualdron/PiDigits/master/img/3.PNG "ejecución con start()")
+ejecución con start()
 
 ![](https://raw.githubusercontent.com/AndresFelipeGualdron/PiDigits/master/img/4.PNG "ejecución con run()")
+ejecución con run()
 
 Esta diferencia se debe a que cuando usamos run() el programa se va a ejecutar en orden, hilo por hilo, y cuando usamos start() los tres hilos comienzan a ejecutarse al mismo tiempo, el proceso lo hacen en paralelo y por lo tanto, la impresión no va a tener un orden específico, éste puede variar.
 
 ### Part II BBP
 
 ![](https://raw.githubusercontent.com/AndresFelipeGualdron/PiDigits/master/img/5.PNG "Clase Thread de PiDigits")
+Clase Thread de PiDigits
 
 ![](https://raw.githubusercontent.com/AndresFelipeGualdron/PiDigits/master/img/6.PNG "Método donde creado para obtener los dítgitos con hilos")
+Método donde creado para obtener los dítgitos con hilos
 
 ### Part III
 
 ![](https://raw.githubusercontent.com/AndresFelipeGualdron/PiDigits/master/img/7.PNG "Obteniendo 1000000 digitos con un hilo")
+Obteniendo 1000000 digitos con un hilo
 
 ![](https://raw.githubusercontent.com/AndresFelipeGualdron/PiDigits/master/img/8.PNG "Obteniendo 1000000 digitos con 200 hilos")
+Obteniendo 1000000 digitos con 200 hilos
 
 ![](https://raw.githubusercontent.com/AndresFelipeGualdron/PiDigits/master/img/9.PNG "Obteniendo 1000000 digitos con 500 hilos")
+Obteniendo 1000000 digitos con 500 hilos
 
 ### Why is the best performance not achieved with the 500 threads?
 Ya que la sección paralela al algoritmo aumenta cuando el número de hilos aumentan
