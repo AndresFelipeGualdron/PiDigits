@@ -22,7 +22,6 @@ public class ThreadDigits extends Thread{
     public void run(){
         PiDigits piDigits = new PiDigits();
         this.rta = piDigits.getDigits(start,end);
-        System.out.println(this.rta);
 
     }
 

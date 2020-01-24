@@ -51,46 +51,45 @@ public class PiDigits {
         return digits;
     }
 
-    
 
+    /**
+     * La siguiente funcion obtiene digistos decimales del numero pi
+     * @param start inicio de obtencion de digitos
+     * @param count total de digitos a obtener
+     * @param n numero de hilos que se va a utilizar
+     * @return
+     * @throws InterruptedException
+     */
     public static byte[] getDigits(int start, int count, int n) throws InterruptedException {
-
-
         int div = (int)(count/n);
         int mod = count%n;
         int inicio = start;
-        int fin = div + mod;
+        int largo = div + mod;
         hilos = new ArrayList<ThreadDigits>();
         for(int i = 0; i < n; i++){
-            ThreadDigits threadDigits = new ThreadDigits(inicio,fin);
-            //System.out.println(inicio);
+            ThreadDigits threadDigits = new ThreadDigits(inicio,largo);
             hilos.add(threadDigits);
-            inicio += div;
-            fin += div;
+            inicio += largo;
+            largo = div;
         }
-
         for(int i = 0; i < n; i++){
             hilos.get(i).start();
         }
         for(int i = 0; i < n; i++){
             hilos.get(i).join();
         }
-
         ArrayList<byte[]> r = new ArrayList<>();
         for(int i = 0; i < n; i++){
             r.add(hilos.get(i).getRta());
         }
-
-        byte[] bites = new byte[90];
+        byte[] bites = new byte[count];
         int cont = 0;
         for(int i = 0; i < n; i++){
-            //System.out.println(r.get(i).length);
             for(int j = 0; j<r.get(i).length; j++){
                 bites[cont] = r.get(i)[j];
                 cont++;
             }
         }
-
         return bites;
 
     }

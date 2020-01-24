@@ -16,17 +16,17 @@ public class CountThreadsMain {
 
 
     public static void main(String a[]){
-        CountThread countThreadOne = new CountThread(0,99);
-        CountThread countThreadTwo = new CountThread(100, 199);
-        CountThread countThreadThree = new CountThread(200,299);
+        CountThread countThreadOne = new CountThread(0,9);
+        CountThread countThreadTwo = new CountThread(10, 19);
+        CountThread countThreadThree = new CountThread(20,29);
 
         Thread threadOne = new Thread(countThreadOne);
         Thread threadTwo = new Thread(countThreadTwo);
         Thread threadThree = new Thread(countThreadThree);
 
-        threadOne.start();
-        threadTwo.start();
-        threadThree.start();
+        threadOne.run();
+        threadTwo.run();
+        threadThree.run();
     }
 
 }
