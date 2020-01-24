@@ -3,7 +3,7 @@
 ## ANDRES GUALDRON - NATALIA PALACIOS
 
 ### Part I - Introduction to Java Threads
-![](https://raw.githubusercontent.com/AndresFelipeGualdron/PiDigits/master/imp/1.PNG "Thread de números entre A y B")
+![](https://github.com/AndresFelipeGualdron/PiDigits/master/imp/1.PNG "Thread de números entre A y B")
 
 Esta es la forma en la que se completó la clase que define el ciclo de vida del hilo que imprime los números entre un A y B determinado.
 
